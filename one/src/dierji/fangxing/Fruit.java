@@ -1,0 +1,20 @@
+package dierji.fangxing;
+
+public class Fruit {
+    public String name;
+
+//    public String getName() {
+//        return name;
+//    }
+//
+//    public void setName(String name) {
+//        this.name = name;
+//    }
+}
+
+class Apple extends Fruit {
+
+}
+class A<T> {
+
+}
