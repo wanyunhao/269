@@ -23,6 +23,14 @@ public class Demo01 {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            if (null != reader) {
+                try {
+                    reader.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
 
     }
