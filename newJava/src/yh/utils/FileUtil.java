@@ -29,8 +29,8 @@ public class FileUtil {
             throw new IOException(dest.getAbsolutePath() + "不能建立与文件夹同名的文件");
         }
         //选择流
-        InputStream is = new FileInputStream(src);
-        OutputStream os = new FileOutputStream(dest);
+        InputStream is = new BufferedInputStream(new FileInputStream(src));
+        OutputStream os = new BufferedOutputStream(new FileOutputStream(dest));
         //3.文件拷贝 循环 + 读取 + 写出
         byte[] flush = new byte[1024];
         int len = 0;

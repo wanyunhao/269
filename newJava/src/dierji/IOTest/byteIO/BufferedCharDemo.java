@@ -1,28 +1,30 @@
 package dierji.IOTest.byteIO;
 
-import yh.utils.FileUtil;
-
 import java.io.*;
 
-public class copyDemo {
+/**
+ * 字符缓冲流 + 新增方法 (不能发生多态)
+ */
+public class BufferedCharDemo {
+    //继续看153 40秒
     public static void main(String[] args) {
-        copyFile("/Users/wanyunhao/Desktop/JavaTest/study/xixi.txt","/Users/wanyunhao/Desktop/JavaTest/study/wyh01.txt");
-    }
-
-    public static void copyFile(String srcPath, String destPath) {
-        File src = new File(srcPath);
-        File dest = new File(destPath);
+        File src = new File("/Users/wanyunhao/Desktop/JavaTest/newJava/src/dierji/IOTest/byteIO/Demo01.java");
+        File dest = new File("/Users/wanyunhao/Desktop/JavaTest/study/wyh01.txt");
         //选择流
-        Writer writer = null;
-        Reader reader = null;
+        BufferedReader reader = null;
+        BufferedWriter writer = null;
         try {
+
             reader = new BufferedReader(new FileReader(src));
             writer = new BufferedWriter(new FileWriter(dest));
             //读取操作
-            char[] flush = new char[1024];
-            int len = 0;
-            while (-1 != reader.read(flush)) {
-                writer.write(flush,0,len);
+            String line = null;
+            while ((line = reader.readLine()) != null) {
+                writer.write(line);
+                writer.newLine();//换行符号
+                writer.append("wyh" + "帅的一匹" + 18);
+                writer.newLine();//换行符号
+
             }
             writer.flush();
         } catch (FileNotFoundException e) {
@@ -45,6 +47,8 @@ public class copyDemo {
                 }
             }
         }
+
+
     }
 }
 

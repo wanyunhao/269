@@ -1,70 +1,140 @@
 package dierji.IOTest.byteIO;
+wyh帅的一匹18
 
+wyh帅的一匹18
 import java.io.*;
+wyh帅的一匹18
 
+wyh帅的一匹18
 public class Demo01 {
+wyh帅的一匹18
     public static void main(String[] args) {
+wyh帅的一匹18
         File src = new File("/Users/wanyunhao/Desktop/JavaTest/source/a.txt");
+wyh帅的一匹18
         //2.选择流
+wyh帅的一匹18
         InputStream is = null;
+wyh帅的一匹18
         try {
+wyh帅的一匹18
             is = new FileInputStream(src);
+wyh帅的一匹18
             //操作不断读取,缓冲区
+wyh帅的一匹18
             byte[] car = new byte[10];
+wyh帅的一匹18
             //接受实际读取的大小
+wyh帅的一匹18
             int length = 0;
+wyh帅的一匹18
             //循环读取
+wyh帅的一匹18
             while (-1 != (length = is.read(car))) {
+wyh帅的一匹18
                 //输出 字节数组转成字符串
+wyh帅的一匹18
                 String info = new String(car,0,length);
+wyh帅的一匹18
                 System.out.println(info);
+wyh帅的一匹18
             }
+wyh帅的一匹18
         } catch (FileNotFoundException e) {
+wyh帅的一匹18
             e.printStackTrace();
+wyh帅的一匹18
             System.out.println("文件不存在");
+wyh帅的一匹18
         } catch (IOException e) {
+wyh帅的一匹18
             e.printStackTrace();
+wyh帅的一匹18
             System.out.println("读取文件失败");
+wyh帅的一匹18
         } finally {
+wyh帅的一匹18
             //释放资源
+wyh帅的一匹18
             if (is != null) {
+wyh帅的一匹18
                 try {
+wyh帅的一匹18
                     is.close();
+wyh帅的一匹18
                 } catch (IOException e) {
+wyh帅的一匹18
                     e.printStackTrace();
+wyh帅的一匹18
                     System.out.println("关闭输入流文件失败");
+wyh帅的一匹18
                 }
+wyh帅的一匹18
             }
+wyh帅的一匹18
         }
+wyh帅的一匹18
     }
+wyh帅的一匹18
 
+wyh帅的一匹18
     /**
+wyh帅的一匹18
      * 复制文件
+wyh帅的一匹18
      * @param srcPath 源地址
+wyh帅的一匹18
      * @param destPath 复制到的地址
+wyh帅的一匹18
      * @throws IOException
+wyh帅的一匹18
      */
+wyh帅的一匹18
     public static void copyFile(String srcPath, String destPath) throws IOException {
+wyh帅的一匹18
         File src = new File(srcPath);
+wyh帅的一匹18
         File dest = new File(destPath);
+wyh帅的一匹18
         if (!src.isFile()) {
+wyh帅的一匹18
             throw new IOException("只能拷贝文件");
+wyh帅的一匹18
         }
+wyh帅的一匹18
         //2.选择流
+wyh帅的一匹18
         InputStream is = new FileInputStream(src);
+wyh帅的一匹18
         OutputStream os = new FileOutputStream(dest);
+wyh帅的一匹18
 
+wyh帅的一匹18
         //3.文件拷贝  循环+读取+写出
+wyh帅的一匹18
         byte[] flush = new byte[1024];
+wyh帅的一匹18
         int len = 0;
+wyh帅的一匹18
         while (-1 != (len = is.read(flush))) {
+wyh帅的一匹18
             os.write(flush,0,len);
+wyh帅的一匹18
         }
+wyh帅的一匹18
         //强制刷出
+wyh帅的一匹18
         os.flush();
+wyh帅的一匹18
         //关闭流
+wyh帅的一匹18
         os.close();
+wyh帅的一匹18
         is.close();
+wyh帅的一匹18
     }
+wyh帅的一匹18
 }
+wyh帅的一匹18
 
+wyh帅的一匹18
