@@ -20,7 +20,6 @@ public class ConvertDemo02 {
         while (null != (info = br.readLine())) {
             System.out.println(info);
         }
-
         br.close();
     }
 }
