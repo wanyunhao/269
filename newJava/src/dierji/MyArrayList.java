@@ -4,6 +4,8 @@ package dierji;
 * 自己实现ArrayList
 *
 * */
+
+@SuppressWarnings("all")
 public class MyArrayList {
 
     private Object[] elementData;
